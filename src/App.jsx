@@ -1,11 +1,24 @@
 import styles from './App.module.css';
+import TodoForm from './components/form/todoForm';
+
+
+// function App() {
+//   return (
+//     <div>
+//       <h1>Todo App</h1>
+//       <TodoForm />
+//       {/* Other components here */}
+//     </div>
+//   );
+// }
 
 
 function App() {
   return (
-    <div className={styles.container}>
+  <div className={styles.container}>
+      <TodoForm />
 
-        <div className={styles.fieldwithlabel}>
+        {/* <div className={styles.fieldwithlabel}>
           <label for="text">Add a task</label>
           <input type="text" placeholder="E.g. Pick up dry cleaning"/>
         </div>
@@ -28,10 +41,10 @@ function App() {
 
         <div className={styles.button}>
           <button>Add to list</button>
-        </div>
+        </div> */}
 
     </div>
-  );
+    );
 };
 
-export default App
+export default App;
