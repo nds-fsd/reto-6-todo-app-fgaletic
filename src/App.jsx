@@ -18,7 +18,8 @@ function App() {
   <div className={styles.container}>
       <TodoForm />
 
-        {/* <div className={styles.fieldwithlabel}>
+        {/* MOVED TO COMPONENT
+          <div className={styles.fieldwithlabel}>
           <label for="text">Add a task</label>
           <input type="text" placeholder="E.g. Pick up dry cleaning"/>
         </div>

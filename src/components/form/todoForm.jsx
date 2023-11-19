@@ -1,9 +1,6 @@
 import styles from './todoForm.module.css';
 import { useState } from 'react';
-import { useForm } from "react-hook-form"
-
-import { useState } from 'react';
-import { useForm } from 'react-hook-form';
+import { useForm } from "react-hook-form";
 
 function TodoForm(props) {
     const [responseError, setResponseError] = useState('');
@@ -37,7 +34,6 @@ function TodoForm(props) {
 
     if (responseError) return (
         <div className={styles.container}>
-            <h1>HTML Form</h1>
             <h3>Something went wrong!</h3>
         </div>
     );
@@ -45,7 +41,6 @@ function TodoForm(props) {
 
     if (success) return (
         <div className={styles.container}>
-            <h1>HTML Form</h1>
             <h3>Task created!</h3>
         </div>
     );
@@ -68,6 +63,7 @@ function TodoForm(props) {
                     type="date"
                     min="1910-01-01"
                     max="2024-12-31"
+                    pattern="\d{4}-\d{2}-\d{2}" /*why is this not working??8*/
                     {...register("dueDate", { required: true })}
                 />
             </div>
@@ -83,9 +79,8 @@ function TodoForm(props) {
                 </select>
             </div>
 
-            <div className={styles.button}>
-                <button type="submit">Add to list</button>
-            </div>
+
+            <button className={styles.submit} type="submit">Add to list</button>
         </form>
     );
 };
