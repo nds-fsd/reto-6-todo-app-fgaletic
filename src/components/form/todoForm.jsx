@@ -9,8 +9,7 @@ function TodoForm(props) {
     const { handleSubmit, register, formState: { errors } } = useForm();
 
     const onSubmit = (data) => {
-        // Handle form submission here
-        // console.log(data); // Example: Log form data to the console
+        console.log(data);
         fetch('http://localhost:3000/todo', {
             method: 'POST',
             headers: {
@@ -18,16 +17,16 @@ function TodoForm(props) {
             },
             body: JSON.stringify(data)
         }).then((response) => {
-            // console.log(response);
+            console.log(response);
             if (response.status !== 200) {
                 setResponseError(true);
             }
             return response.json();
         }).then((data) => {
-            // console.log(data);
+            console.log(data);
             setSuccess(true);
         }).catch((error) => {
-            // console.log(error);
+            console.log(error);
             setResponseError(true);
         });
     };
@@ -52,7 +51,7 @@ function TodoForm(props) {
                 <input
                     type="text"
                     placeholder="E.g. Pick up dry cleaning"
-                    {...register("task", { required: true })}
+                    {...register("title", { required: true })}
                 />
             </div>
 
@@ -63,8 +62,8 @@ function TodoForm(props) {
                     type="date"
                     min="1910-01-01"
                     max="2024-12-31"
-                    pattern="\d{4}-\d{2}-\d{2}" /*why is this not working??8*/
-                    {...register("dueDate", { required: true })}
+                    pattern="\d{4}-\d{2}-\d{2}" /*why is this not working??*/
+                    {...register("fecha", { required: true })}
                 />
             </div>
 

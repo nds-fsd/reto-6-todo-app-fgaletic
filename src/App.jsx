@@ -1,6 +1,6 @@
 import styles from './App.module.css';
 import TodoForm from './components/form/todoForm';
-
+import { useEffect } from 'react';
 
 // function App() {
 //   return (
@@ -14,6 +14,18 @@ import TodoForm from './components/form/todoForm';
 
 
 function App() {
+  const [todo, setTodos] = useState([])
+
+  useEffect(() => {
+    fetch("http://localhost:3000/todo")
+        .then(res => res.json())
+        .then(data => {
+          setTodos(data)
+        }
+        )
+        .catch(err => console.log(err))
+      });
+
   return (
   <div className={styles.container}>
       <TodoForm />

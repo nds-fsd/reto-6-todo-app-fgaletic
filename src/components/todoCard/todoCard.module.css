@@ -1,0 +1,28 @@
+.card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 20%;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 10px;
+    width: 300px;
+    /* background-color: #fff; */
+    box-shadow: 0 2px 3px #ccc;
+};
+
+.cardcontent {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+};
+
+.cardoptions {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+};
