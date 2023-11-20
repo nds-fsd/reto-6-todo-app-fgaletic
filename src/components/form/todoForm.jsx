@@ -63,7 +63,7 @@ function TodoForm(props) {
                     min="1910-01-01"
                     max="2024-12-31"
                     pattern="\d{4}-\d{2}-\d{2}" /*why is this not working??*/
-                    {...register("fecha", { required: true })}
+                    {...register("fecha", { required: true})}
                 />
             </div>
 
@@ -80,6 +80,8 @@ function TodoForm(props) {
 
 
             <button className={styles.submit} type="submit">Add to list</button>
+
+
         </form>
     );
 };

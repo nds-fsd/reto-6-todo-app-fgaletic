@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import styles from './todoCard.module.css';
 
 const TodoCard = (props) => {
+    const {title, done : hecho, category, fecha: date} = props
     const [responseError, setResponseError] = useState('');
     const [success, setSuccess] = useState(false);
     const [todo, setTodo] = useState('');
@@ -74,12 +75,14 @@ const TodoCard = (props) => {
         <div className={styles.card}>
             {success && <p>{message}</p>}
             <div className={styles.cardcontent}>
-                <h3>{todo}</h3>
-                <p>{fecha}</p>
+                <p>{category}</p>
+                <h3>{title}</h3>
+                <p>{date}</p>
+                
             </div>
             <div className={styles.cardoptions}>
                 <button onClick={handleDelete}>Delete</button>
-                <button onClick={handleComplete}>{done ? 'Mark as pending' : 'Mark as done'}</button>
+                <button onClick={handleComplete}>{hecho ? 'Mark as pending' : 'Mark as done'}</button>
             </div>
         </div>
     );
