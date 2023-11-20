@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { useForm } from "react-hook-form";
 
 function TodoForm(props) {
-    const [responseError, setResponseError] = useState('');
+    const [responseError, setResponseError] = useState(false);
     const [success, setSuccess] = useState(false);
 
     const { handleSubmit, register, formState: { errors } } = useForm();
