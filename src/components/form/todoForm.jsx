@@ -2,11 +2,15 @@ import styles from './todoForm.module.css';
 import { useState } from 'react';
 import { useForm } from "react-hook-form";
 
-function TodoForm(props) {
+function TodoForm({visible, setVisible}) {
     const [responseError, setResponseError] = useState(false);
     const [success, setSuccess] = useState(false);
 
     const { handleSubmit, register, formState: { errors } } = useForm();
+
+    const handleHide = () => {
+        setVisible(!visible)
+    }
 
     const onSubmit = (data) => {
         console.log(data);
@@ -80,6 +84,8 @@ function TodoForm(props) {
 
 
             <button className={styles.submit} type="submit">Add to list</button>
+
+            <button type={'button'} onClick={handleHide} className={styles.submit}>{`${visible == true?'Hide todos':'Show todos'}`}</button>
 
 
         </form>

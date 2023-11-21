@@ -2,8 +2,7 @@ const URL = "http://localhost:3000/todo"
 
 export const getTodos = async () => {
     try {
-        const response = await fetch(
-)
+        const response = await fetch(URL)
         const data = response.json()
         return data
     }catch{

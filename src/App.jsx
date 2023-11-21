@@ -17,6 +17,7 @@ import { getTodos } from './utils/api';
 
 function App() {
   const [todos, setTodos] = useState([])
+  const [visible, setVisible] = useState(true)
 
 
   useEffect(() => {
@@ -35,8 +36,8 @@ function App() {
 
   return (
   <div className={styles.container}>
-      <TodoForm />
-      <Container todos={todos}/>
+      <TodoForm visible={visible} setVisible={setVisible}/>
+      {visible && <Container todos={todos}/>}
 
         {/* MOVED TO COMPONENT
           <div className={styles.fieldwithlabel}>
