@@ -5,9 +5,14 @@ export const getTodos = async () => {
         const response = await fetch(URL)
         const data = response.json()
         return data
-    }catch{
-        throw new Error("Hemos obtenido un error")
-    }
-}   
-export const addNewTodo = (data) => {
-}
+    }catch (error) {
+        console.error('Error getting todos:', error);
+        throw error;
+      }
+    };
+
+// export const addNewTodo = (data) => {
+//     try {
+//         const response = fetch(URL, {
+//     }
+// }

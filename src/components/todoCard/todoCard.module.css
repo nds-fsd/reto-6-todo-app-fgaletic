@@ -1,28 +1,36 @@
 .card {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    height: 20%;
-    border: 1px solid #ccc;
+    justify-content: center;
+    height: 200px;
+    appearance: none;
     border-radius: 5px;
     padding: 10px;
     margin: 10px;
     width: 300px;
-    /* background-color: #fff; */
-    box-shadow: 0 2px 3px #ccc;
-};
+    background-color: rgba(12, 50, 75, 0.4);
+    box-shadow: 0 1px 1px #cccccc7e;
+}
 
 .cardcontent {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: center;
     height: 100%;
-};
+    font-size: medium;
+}
 
 .cardoptions {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    padding: 10px;
-};
+    padding: 5px;
+    font-size: large;
+}
+
+.submit:hover{
+    background-color: rgb(1, 79, 110);
+    color: rgb(255, 255, 255);
+    cursor: pointer;
+  }

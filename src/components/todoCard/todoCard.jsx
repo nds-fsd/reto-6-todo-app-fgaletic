@@ -5,18 +5,14 @@ const TodoCard = (props) => {
     const {title, done : hecho, category, fecha: date} = props
     const [responseError, setResponseError] = useState('');
     const [success, setSuccess] = useState(false);
-    const [todo, setTodo] = useState('');
-    const [fecha, setFecha] = useState('');
     const [id, setId] = useState('');
     const [done, setDone] = useState(false);
     const [message, setMessage] = useState('');
 
     useEffect(() => {
-        setTodo(props.todo);
-        setFecha(props.fecha);
         setId(props.id);
         setDone(props.done);
-    }, [props.todo, props.fecha, props.id, props.done]);
+    }, [props.id, props.done]);
 
     const handleDelete = () => {
         fetch(`http://localhost:3000/todo/${id}`, {
@@ -74,15 +70,15 @@ const TodoCard = (props) => {
     return (
         <div className={styles.card}>
             {success && <p>{message}</p>}
-            <div className={styles.cardcontent}>
-                <p>{category}</p>
-                <h3>{title}</h3>
-                <p>{date}</p>
+            <div className={styles.cardContent}>
+                <p className={styles.p}>{category}</p>
+                <h3 className={styles.h3}>{title}</h3>
+                <p className={styles.p}>{date}</p>
                 
             </div>
-            <div className={styles.cardoptions}>
+            <div className={styles.cardOptions}>
                 <button onClick={handleDelete}>Delete</button>
-                <button onClick={handleComplete}>{hecho ? 'Mark as pending' : 'Mark as done'}</button>
+                <button onClick={handleComplete} className={styles.submit}>{hecho ? 'Mark as pending' : 'Mark as done'}</button>
             </div>
         </div>
     );

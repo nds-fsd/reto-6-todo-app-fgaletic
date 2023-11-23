@@ -10,7 +10,7 @@ function TodoForm({visible, setVisible}) {
 
     const handleHide = () => {
         setVisible(!visible)
-    }
+    };
 
     const onSubmit = (data) => {
         console.log(data);

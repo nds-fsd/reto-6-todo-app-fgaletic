@@ -4,6 +4,7 @@
     justify-content: center;
     align-items: center;
     padding: 10px;
+    font-size: x-large
   }
   
   /* IF I  ENABLE THIS THE WHOLE CARD GETS CHANGED
@@ -31,7 +32,8 @@
   } */
 
 .submit:hover{
-  background-color: skyblue;
+  background-color: rgb(1, 79, 110);
+  color: rgb(255, 255, 255);
   cursor: pointer;
 }
   
