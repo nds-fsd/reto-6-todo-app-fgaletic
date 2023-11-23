@@ -1,15 +1,15 @@
 import React from 'react'
 import TodoCard from '../todoCard/todoCard'
 
-const Container = ({ todos }) => { // 3 todos 
+const Container = ({ todos }) => {
   return (
-      <div>
-          {todos.map((todo) => { 
-              return (
-                <TodoCard key={todo.id} title={todo.tile} fecha={todo.fecha} done={todo.done} category={todo.category} />
-                )
-            })}
-        </div>
+    <div>
+      {todos.slice(0, 3).map((todo) => {
+        return (
+          <TodoCard key={todo.id} title={todo.title} fecha={todo.fecha} done={todo.done} category={todo.category} />
+        )
+      })}
+    </div>
   )
 }
 

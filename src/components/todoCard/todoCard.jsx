@@ -1,64 +1,58 @@
 import { useState, useEffect } from "react";
 import styles from './todoCard.module.css';
+import { deleteTodo, updateTodo } from '../../utils/api.js';
 
 const TodoCard = (props) => {
-    const {title, done : hecho, category, fecha: date} = props
+    const { title, done, category, fecha: date } = props;
     const [responseError, setResponseError] = useState('');
     const [success, setSuccess] = useState(false);
     const [id, setId] = useState('');
-    const [done, setDone] = useState(false);
+    const [isDone, setIsDone] = useState(false);
     const [message, setMessage] = useState('');
 
     useEffect(() => {
         setId(props.id);
-        setDone(props.done);
+        setIsDone(props.done);
     }, [props.id, props.done]);
 
     const handleDelete = () => {
-        fetch(`http://localhost:3000/todo/${id}`, {
-            method: 'DELETE',
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        }).then((response) => {
-            console.log(response);
-            if (response.status !== 200) {
+        deleteTodo(id)
+            .then((response) => {
+                console.log(response);
+                if (response.status !== 200) {
+                    setResponseError(true);
+                }
+                return response.json();
+            })
+            .then((data) => {
+                console.log(data);
+                setSuccess(true);
+                setMessage('Task deleted');
+            })
+            .catch((error) => {
+                console.log(error);
                 setResponseError(true);
-            }
-            return response.json();
-        }).then((data) => {
-            console.log(data);
-            setSuccess(true);
-            setMessage('Task deleted');
-        }).catch((error) => {
-            console.log(error);
-            setResponseError(true);
-        });
+            });
     };
 
     const handleComplete = () => {
-        fetch(`http://localhost:3000/todo/${id}`, {
-            method: 'PUT',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                done: !done
+        updateTodo(id, !isDone)
+            .then((response) => {
+                console.log(response);
+                if (response.status !== 200) {
+                    setResponseError(true);
+                }
+                return response.json();
             })
-        }).then((response) => {
-            console.log(response);
-            if (response.status !== 200) {
+            .then((data) => {
+                console.log(data);
+                setSuccess(true);
+                setMessage('Task updated');
+            })
+            .catch((error) => {
+                console.log(error);
                 setResponseError(true);
-            }
-            return response.json();
-        }).then((data) => {
-            console.log(data);
-            setSuccess(true);
-            setMessage('Task updated');
-        }).catch((error) => {
-            console.log(error);
-            setResponseError(true);
-        });
+            });
     };
 
     if (responseError) return (
@@ -72,13 +66,13 @@ const TodoCard = (props) => {
             {success && <p>{message}</p>}
             <div className={styles.cardContent}>
                 <p className={styles.p}>{category}</p>
-                <h3 className={styles.h3}>{title}</h3>
+                <p className={styles.p}>{title}</p>
                 <p className={styles.p}>{date}</p>
                 
             </div>
             <div className={styles.cardOptions}>
-                <button onClick={handleDelete}>Delete</button>
-                <button onClick={handleComplete} className={styles.submit}>{hecho ? 'Mark as pending' : 'Mark as done'}</button>
+                <button onClick={handleDelete} className={styles.delete}>Delete</button>
+                <button onClick={handleComplete} className={styles.submit} id="hide">{isDone ? 'Done' : 'Pending'}</button>
             </div>
         </div>
     );
