@@ -74,17 +74,23 @@ function TodoForm({visible, setVisible}) {
             <div className={styles.fieldwithlabel}>
                 <label htmlFor="category">Choose category</label>
                 <select name="category" id="category" {...register("category", { required: true })}>
-                    <option value="personal">Personal</option>
-                    <option value="work">Work</option>
-                    <option value="shopping">Shopping</option>
-                    <option value="health">Health</option>
-                    <option value="family">Family</option>
+                    <option value="Personal">Personal</option>
+                    <option value="Work">Work</option>
+                    <option value="Shopping">Shopping</option>
+                    <option value="Health">Health</option>
+                    <option value="Family">Family</option>
                 </select>
             </div>
 
-            <button className={styles.submit} type="submit">Add to list</button>
+            <button className={styles.addTodo} type="submit">
+                Add to list
+                </button>
 
-            <button type={'button'} onClick={handleHide} className={styles.submit}>{`${visible == true?'Hide todos':'Show todos'}`}</button>
+            <button onClick={handleHide} className={styles.hideUnhide}>
+
+                {`${visible == true?'Hide todos':'Show todos'}`}
+                
+                </button>
         </form>
     );
 };

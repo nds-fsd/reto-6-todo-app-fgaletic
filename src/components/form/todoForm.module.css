@@ -25,12 +25,6 @@
     font-size: x-large
   }
 
-
-.submit:hover{
-  background-color: rgb(1, 79, 110);
-  color: rgb(255, 255, 255);
-  cursor: pointer;
-}
   
   input  {
     display: flex;
@@ -72,4 +66,5 @@
     margin: 10px;
     padding-right: 2em;
   };
+
 

@@ -71,8 +71,8 @@ const TodoCard = (props) => {
                 
             </div>
             <div className={styles.cardOptions}>
-                <button onClick={handleDelete} className={styles.delete}>Delete</button>
-                <button onClick={handleComplete} className={styles.submit} id="hide">{isDone ? 'Done' : 'Pending'}</button>
+                <button onClick={handleDelete} className={styles.options}>Delete</button>
+                <button onClick={handleComplete} className={styles.options}>{isDone ? 'Done' : 'Pending'}</button>
             </div>
         </div>
     );

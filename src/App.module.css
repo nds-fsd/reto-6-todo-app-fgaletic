@@ -63,9 +63,10 @@ button {
   font-size: 16px;
   font-weight: 600;
   width: 125px;
-};
+}
 
-.button:hover {
-  background-color: skyblue;
+button:hover {
+  background-color:  rgb(1, 79, 110);
+  color: rgb(255, 255, 255);
   cursor: pointer;
 }
