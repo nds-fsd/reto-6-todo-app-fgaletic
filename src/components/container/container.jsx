@@ -13,4 +13,4 @@ const Container = ({ todos }) => {
   )
 }
 
-export default Container
+export default Container;
