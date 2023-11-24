@@ -3,8 +3,8 @@ import TodoCard from '../todoCard/todoCard'
 
 const Container = ({ todos }) => {
   return (
-    <div>
-      {todos.slice(0, 3).map((todo) => {
+    <div style={{ height: '600px', overflow: 'scroll' }}>
+      {todos.map((todo) => {
         return (
           <TodoCard key={todo.id} title={todo.title} fecha={todo.fecha} done={todo.done} category={todo.category} />
         )

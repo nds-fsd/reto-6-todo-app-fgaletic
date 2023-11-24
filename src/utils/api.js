@@ -29,6 +29,7 @@ export const createTodo = async (data) => {
 
 export const updateTodo = async (id, data) => {
     try {
+        const todo = { isDone };
         const response = await fetch(`${URL}/${id}`, {
             method: 'PUT',
             headers: {

@@ -3,8 +3,8 @@ import styles from './todoCard.module.css';
 import { deleteTodo, updateTodo } from '../../utils/api.js';
 
 const TodoCard = (props) => {
-    const { title, done, category, fecha: date } = props;
-    const [responseError, setResponseError] = useState('');
+    const { title, category, fecha: date } = props;
+    const [responseError, setResponseError] = useState(false);
     const [success, setSuccess] = useState(false);
     const [id, setId] = useState('');
     const [isDone, setIsDone] = useState(false);
@@ -18,9 +18,10 @@ const TodoCard = (props) => {
     const handleDelete = () => {
         deleteTodo(id)
             .then((response) => {
-                console.log(response);
                 if (response.status !== 200) {
                     setResponseError(true);
+                    setMessage('Failed to delete task');
+                    return;
                 }
                 return response.json();
             })
@@ -28,19 +29,23 @@ const TodoCard = (props) => {
                 console.log(data);
                 setSuccess(true);
                 setMessage('Task deleted');
+                props.onDelete(id);
             })
             .catch((error) => {
                 console.log(error);
                 setResponseError(true);
+                setMessage('Failed to delete task');
             });
     };
-
+    
     const handleComplete = () => {
         updateTodo(id, !isDone)
             .then((response) => {
                 console.log(response);
                 if (response.status !== 200) {
                     setResponseError(true);
+                    setMessage('Failed to update task');
+                    return;
                 }
                 return response.json();
             })
@@ -48,10 +53,12 @@ const TodoCard = (props) => {
                 console.log(data);
                 setSuccess(true);
                 setMessage('Task updated');
+                setIsDone(!isDone);
             })
             .catch((error) => {
                 console.log(error);
                 setResponseError(true);
+                setMessage('Failed to update task');
             });
     };
 
